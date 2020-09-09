@@ -8,10 +8,10 @@ body, html {
 
 header {
     display: block;
-    /* position: fixed; */
-    /* top: 0;
+    position: fixed;
+    top: 0;
     left: 0;
-    right: 0; */
+    right: 0;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -44,5 +44,7 @@ header #logo {
 }
 
 #page {
-    margin-top: 1%;
+    margin-top: 10%;
+    padding: 1%;
+    width: 100%;
 }

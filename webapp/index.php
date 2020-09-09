@@ -1,7 +1,7 @@
 <?php
-    error_log("Starting up", 0);
-    $nav = array(
-        array(
+    header("Cache-Control: private");
+    $NAV = Array(
+        Array(
             "href" => "/",
             "text" => "home",
         )
@@ -19,7 +19,8 @@
         <img src="/assets/img/logo.png" alt="RoadMapper-G">
         <nav>
             <?php
-                foreach($nav as $button) {
+                echo "<a>Test: (<?php echo gettype($NAV) . ': ' . (count($NAV); ?>)</a>";
+                foreach($NAV as $button) {
                     echo "<a href='";
                     echo (isset($button['href'])) ? $button['href'] : "";
                     echo (isset($button['current'])) ? " data-current='" . intval($button['href']) . "'" : "";
@@ -30,5 +31,6 @@
             ?>
         </nav>
     </header>
+    <pre>Nav: <?php var_dump($NAV); ?></pre>
 </body>
 </html>

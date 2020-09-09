@@ -32,8 +32,13 @@ header nav a {
     padding: .5% 2%;
     margin: 0.5%;
     border: 1px solid #000;
-
 }
+
+header nav a[enabled=true] {
+    color: black;
+    border-style: inset;
+}
+
 
 header #logo {
     float: left;
@@ -74,5 +79,5 @@ header #logo {
     border-radius: 50%;
     border: 2px solid gray;
     border-left: 3px solid red;
-    animation: spin 2s linear infinite;
+    animation: spin 1.5s linear infinite;
 }

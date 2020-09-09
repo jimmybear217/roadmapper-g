@@ -17,6 +17,7 @@
     <title>RoadMapper-G</title>
 </head>
 <body>
+    <!-- <div id='loader-page' style='display=block; position: fixed; background-color: white; top: 0; bottom:0; left: 0; right:0;'><div class="loader"></div></div> -->
     <header>
         <img id="logo" src="/assets/img/logo.png" alt="RoadMapper-G">
         <nav><?php

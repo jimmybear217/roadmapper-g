@@ -1,9 +1,9 @@
 <?php
     header("Cache-Control: private");
     $NAV = Array(
-        Array( "id" => "home", "href" => "/", "text" => "home"),
-        Array( "id" => "webapp", "href" => "/webapp", "text" => "webapp"),
-        Array( "id" => "page1", "href" => "/", "text" => "page1"),
+        Array( "id" => "home", "href" => "javascript:switchPage(\"home\")", "text" => "Home"),
+        Array( "id" => "visual", "href" => "javascript:switchPage(\"visual\")", "text" => "Visual"),
+        Array( "id" => "list", "href" => "javascript:switchPage(\"list\")", "text" => "List"),
     );
 ?>
 <!DOCTYPE html>
@@ -33,10 +33,10 @@
         </nav>
     </header>
     <div id='page' data-homePage="home">
-        <section class='page' id='page-loading' enabled="true"><div class='loader'></div></section>
-        <section class='page' id='page-list'><table id='globalList'></table></section>
-        <section class='page' id='page-visual'></section>
-        <section class='page' id='page-home'>
+        <section class='page' id='page-loading' data-navId="" enabled="true"><div class='loader'></div></section>
+        <section class='page' id='page-list' data-navId="list"><table id='globalList'></table></section>
+        <section class='page' id='page-visual' data-navId="visual"></section>
+        <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
         </section>
     </div>

@@ -48,3 +48,31 @@ header #logo {
     padding: 1%;
     width: 100%;
 }
+
+.page {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.page[enabled=true] {
+    display: block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loader {
+    margin: 40vh auto;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    border-left: 3px solid red;
+    animation: spin 2s linear infinite;
+}

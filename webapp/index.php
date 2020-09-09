@@ -1,9 +1,9 @@
 <?php
     header("Cache-Control: private");
     $NAV = Array(
-        Array( "href" => "/", "text" => "home" ),
-        Array( "href" => "/webapp", "text" => "webapp"),
-        Array( "href" => "/", "text" => "page1" ),
+        Array( "id" => "home", "href" => "/", "text" => "home"),
+        Array( "id" => "webapp", "href" => "/webapp", "text" => "webapp"),
+        Array( "id" => "page1", "href" => "/", "text" => "page1"),
     );
 ?>
 <!DOCTYPE html>
@@ -22,7 +22,9 @@
         <img id="logo" src="/assets/img/logo.png" alt="RoadMapper-G">
         <nav><?php
                 foreach($NAV as $button) {
-                    echo "\n\t\t\t<a href='";
+                    echo "\n\t\t\t<a id='";
+                    echo (isset($button['id'])) ? "nav-" . $button['id'] : "";
+                    echo "' href='";
                     echo (isset($button['href'])) ? $button['href'] : "";
                     echo "'>";
                     echo (isset($button['text'])) ? $button['text'] : "";

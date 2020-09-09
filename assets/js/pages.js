@@ -7,11 +7,21 @@ function loaderPageOverlay(status) {
 }
 
 function switchPage(page) {
-    if (page != 'loading') switchPage('loading')
+    if (page != 'loading') switchPage('loading');
     Array.from(document.getElementsByClassName('page')).forEach( (elem) => {
         elem.setAttribute('enabled', 'false');
     })
-    document.getElementById('page-' + page).setAttribute('enabled', 'true');
+    if (document.getElementById('page-' + page)) {
+        document.getElementById('page-' + page).setAttribute('enabled', 'true');
+        navId = document.getElementById('page-' + page).getAttribute('data-navId');
+        Array.from(document.getElementsByTagName('nav')[0].children).forEach( (elem) => {
+            if (elem.id == 'nav-' + navId) {
+                elem.setAttribute('enabled', 'false');
+            } else {
+                elem.setAttribute('enabled', 'false');
+            }
+        });
+    }
 }
 
 

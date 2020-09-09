@@ -17,7 +17,7 @@
     <title>RoadMapper-G</title>
 </head>
 <body>
-    <!-- <div id='loader-page' style='display=block; position: fixed; background-color: white; top: 0; bottom:0; left: 0; right:0;'><div class="loader"></div></div> -->
+    <div id='loader-page' style='display=block; position: fixed; background-color: white; top: 0; bottom:0; left: 0; right:0;'><div class="loader"></div></div>
     <header>
         <img id="logo" src="/assets/img/logo.png" alt="RoadMapper-G">
         <nav><?php
@@ -30,10 +30,14 @@
                 } ?>    
         </nav>
     </header>
-    <div id='page'>
+    <div id='page' data-homePage="home">
         <section class='page' id='page-loading' enabled="true"><div class='loader'></div></section>
         <section class='page' id='page-list'><table id='globalList'></table></section>
         <section class='page' id='page-visual'></section>
+        <section class='page' id='page-home'>
+            <h1>Home sweet home</h1>
+        </section>
     </div>
 </body>
+<script src="/assets/js/pages.js" type="text/javascript"></script>
 </html>

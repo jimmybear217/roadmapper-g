@@ -1,10 +1,9 @@
 <?php
     header("Cache-Control: private");
     $NAV = Array(
-        Array(
-            "href" => "/",
-            "text" => "home",
-        )
+        Array( "href" => "/", "text" => "home" ),
+        Array( "href" => "/webapp", "text" => "webapp", "current" => true ),
+        Array( "href" => "/", "text" => "page1" ),
     );
 ?>
 <!DOCTYPE html>
@@ -12,25 +11,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
     <title>RoadMapper-G</title>
 </head>
 <body>
     <header>
-        <img src="/assets/img/logo.png" alt="RoadMapper-G">
+        <img id="logo" src="/assets/img/logo.png" alt="RoadMapper-G">
         <nav>
             <?php
-                echo "<a>Test: (<?php echo gettype($NAV) . ': ' . (count($NAV); ?>)</a>";
                 foreach($NAV as $button) {
                     echo "<a href='";
                     echo (isset($button['href'])) ? $button['href'] : "";
                     echo (isset($button['current'])) ? " data-current='" . intval($button['href']) . "'" : "";
-                    echo ">";
+                    echo "'>";
                     echo (isset($button['text'])) ? $button['text'] : "";
                     echo "</a>";
                 }
             ?>
         </nav>
     </header>
-    <pre>Nav: <?php var_dump($NAV); ?></pre>
+    <div id='page'>
+        <pre>Nav:<br><?php print_r($NAV); ?></pre>
+    </div>
 </body>
 </html>

@@ -42,8 +42,12 @@
         <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
         </section>
+        <section class='page' id='page-sync-debug' data-navId="list">
+            
+        </section>
     </div>
 </body>
 <script src="/assets/js/pages.js" type="text/javascript"></script>
 <script src="/assets/js/list.js" type="text/javascript"></script>
+<script src="/assets/js/tasks.js" type="text/javascript"></script>
 </html>

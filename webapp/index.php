@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/main.css" type="text/css">
     <link rel="stylesheet" href="/assets/css/mobile.css" type="text/css" media="screen and (max-width: 600px)">
+    <link rel="stylesheet" href="/assets/css/list.css" type="text/css">
     <title>RoadMapper-G</title>
 </head>
 <body>
@@ -34,7 +35,9 @@
     </header>
     <div id='page' data-homePage="home">
         <section class='page' id='page-loading' data-navId="" enabled="true"><div class='loader'></div></section>
-        <section class='page' id='page-list' data-navId="list"><table id='globalList'></table></section>
+        <section class='page' id='page-list' data-navId="list">
+            <table id='globalList'></table>
+        </section>
         <section class='page' id='page-visual' data-navId="visual"></section>
         <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
@@ -42,4 +45,5 @@
     </div>
 </body>
 <script src="/assets/js/pages.js" type="text/javascript"></script>
+<script src="/assets/js/list.js" type="text/javascript"></script>
 </html>

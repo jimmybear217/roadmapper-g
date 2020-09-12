@@ -22,7 +22,6 @@ function switchPage(page) {
             } else {
                 elem.setAttribute('enabled', 'false');
             }
-            // console.log(elem.id, 'nav-' + navId, elem.getAttribute('enabled'));
         });
         history.pushState({ page: page }, "RoadMapper-G / " + page, "/webapp/#" + page);
     }
@@ -31,7 +30,6 @@ function switchPage(page) {
 // on first load
 if (document.location.hash) {
     page = document.location.hash.slice(1)
-    // console.log("Loading #" + page)
     if (page == "loading")
         page = document.getElementById('page').getAttribute('data-homePage');
     switchPage(page)

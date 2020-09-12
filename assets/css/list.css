@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#globalList {
+    margin: auto;
+    text-align: center;
+    border: 1px solid #000;
+}
+
+#globalList th {
+    font-weight: bold;
+    border: 1px solid #000;
+}
+
+#globalList td {
+    font-weight: normal;
+    border-bottom: 1px solid #000;
+}
+
+#globalList th,
+#globalList td {
+    min-width: 150px;
+}

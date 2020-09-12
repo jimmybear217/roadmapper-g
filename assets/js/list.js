@@ -1,7 +1,7 @@
 
 function displayList() {
     var parent = document.getElementById("globalList");
-    console.log("parent", parent)
+    clearList(parent);
     addTrToList(parent, [
         { tag: "th", text: "taskId"},           // Unique ID of the task
         { tag: "th", text: "parentId" },        // Parent of task when using subtasks
@@ -29,4 +29,12 @@ function addTrToList(parent, line=[], attr=[], insertBefore=null) {
     else parent.appendChild(holder)
 }
 
-displayList()
+function clearList(parent) {
+    Array.from(parent.children).forEach( child => { parent.removeChild(child); });
+}
+
+document.getElementById("page-list").addEventListener("taskUpdate", event => {
+    displayList();
+    // event.stopImmediatePropagation()
+});
+displayList();

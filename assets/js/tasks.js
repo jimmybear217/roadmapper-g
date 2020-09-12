@@ -48,4 +48,14 @@ function updateTask(taskId, action="update", updates = []) {
     }
 }
 
-document.getElementById("page-list").dispatchEvent(new Event("taskUpdate"));
+
+function createTaskListFromDB() {};
+function loadTaskListFromDB() {}
+function updateTaskInDB(taskId, action, updates) {}
+function createTaskListLegacy() {};
+function loadTaskListLegacy() {}
+function updateTaskInLegacy(taskId, action, updates) {}
+
+
+
+// document.getElementById("page-list").dispatchEvent(new Event("taskUpdate"));

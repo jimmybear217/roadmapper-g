@@ -1,6 +1,7 @@
 
 function displayList() {
     var parent = document.getElementById("globalList");
+    var tasks = getTaskList(0,0);
     clearList(parent);
     addTrToList(parent, [
         { tag: "th", text: "taskId"},           // Unique ID of the task
@@ -13,6 +14,19 @@ function displayList() {
         { tag: "th", text: "priority" },        // priority of this task
         { tag: "th", text: "due" },             // timestamp when task is due
     ]);
+    tasks.data.forEach( (task) => {
+        addTrToList(parent, [
+            { tag: "td", text: task.taskId },
+            { tag: "td", text: task.parentId },
+            { tag: "td", text: task.prerequisiteIds },
+            { tag: "td", text: task.status },
+            { tag: "td", text: task.title },
+            { tag: "td", text: task.description },
+            { tag: "td", text: task.link },
+            { tag: "td", text: task.priority },
+            { tag: "td", text: task.due },
+        ], [{key: "id", value: "list-task-" + task.taskId}]);
+    });
 }
 
 function addTrToList(parent, line=[], attr=[], insertBefore=null) {
@@ -21,10 +35,10 @@ function addTrToList(parent, line=[], attr=[], insertBefore=null) {
         if (cell.tag) var elem = document.createElement(cell.tag);
         else var elem = document.createElement("td");
         if (cell.text) elem.appendChild(document.createTextNode(cell.text));
-        if (cell.attr) cell.attr.forEach( a => { elem.setAttribute(a.name, a.value); });
+        if (cell.attr) cell.attr.forEach( a => { elem.setAttribute(a.key, a.value); });
         holder.appendChild(elem);
     })
-    if (attr) attr.forEach( a => { holder.setAttribute(a.name, a.value); });
+    if (attr) attr.forEach( a => { holder.setAttribute(a.key, a.value); });
     if (insertBefore) parent.insertBefore(holder, insertBefore)
     else parent.appendChild(holder)
 }

@@ -37,8 +37,8 @@
         <section class='page' id='page-loading' data-navId="" enabled="true"><div class='loader'></div></section>
         <section class='page' id='page-list' data-navId="list">
             <table id='globalList'></table>
-            <button id='btn_addTuple'>Add a new row</button>
-            <button id='btn_clearStorage'>Clear the list</button>
+            <button id='btn_addTuple'><img src='/assets/img/add.png' height='24' width='24'>Add a new row</button>
+            <button id='btn_clearStorage'><img src='/assets/img/delete.png' height='24' width='24'>Clear the list</button>
         </section>
         <section class='page' id='page-visual' data-navId="visual"></section>
         <section class='page' id='page-home' data-navId="home">

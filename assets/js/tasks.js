@@ -161,6 +161,6 @@ function deleteTaskFromDB(taskId) {
     }
 }
 
-document.getElementById("btn_addTuple").addEventListener("click", () => {dbWriteTask("ADD", {parentId: false, prerequisiteIds: false, status: "active", title: "Welcome to ReoadMapper-G", description: "This is your first ever task", link: "", priority: 0, due: false }).oncomplete = () => {loadAllTasks()}});
-document.getElementById("btn_clearStorage").addEventListener("click", () => {deleteTaskFromDB("ALL").oncomplete = () => {loadAllTasks()} });
+document.getElementById("btn_addTuple").addEventListener("click", () => {dbWriteTask("ADD", {parentId: false, prerequisiteIds: false, status: "active", title: "Welcome to ReoadMapper-G", description: "This is your first ever task", link: "", priority: 0, due: false }).oncomplete = () => {loadAllTasks(); document.getElementById("btn_addTuple").scrollIntoView()}});
+document.getElementById("btn_clearStorage").addEventListener("click", () => {deleteTaskFromDB("ALL").oncomplete = () => {loadAllTasks(); document.getElementById("btn_clearStorage").scrollIntoView()}});
 

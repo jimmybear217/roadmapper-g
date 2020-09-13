@@ -18,15 +18,15 @@ function displayList() {
     tasks.data.forEach( (task, index) => {
         addTrToList(parent, [
             { tag: "td", attr: [ {key: "id", value: "list-task-controls-" + task.taskId.toString()}, { key: 'class', value: "list-task-controls"}]},
-            { tag: "td", text: task.taskId.toString() },
-            { tag: "td", text: task.parentId.toString() },
-            { tag: "td", text: task.prerequisiteIds.toString() },
-            { tag: "td", text: task.status.toString() },
-            { tag: "td", text: task.title.toString() },
-            { tag: "td", text: task.description.toString() },
-            { tag: "td", text: task.link.toString() },
-            { tag: "td", text: task.priority.toString() },
-            { tag: "td", text: task.due.toString() },
+            { tag: "td", text: task.taskId.toString(), attr: [{key: "data-key", value: "taskId"}] },
+            { tag: "td", text: task.parentId.toString(), attr: [{key: "data-key", value: "parentId"}] },
+            { tag: "td", text: task.prerequisiteIds.toString(), attr: [{key: "data-key", value: "prerequisiteIds"}] },
+            { tag: "td", text: task.status.toString(), attr: [{key: "data-key", value: "status"}] },
+            { tag: "td", text: task.title.toString(), attr: [{key: "data-key", value: "title"}] },
+            { tag: "td", text: task.description.toString(), attr: [{key: "data-key", value: "description"}] },
+            { tag: "td", text: task.link.toString(), attr: [{key: "data-key", value: "link"}] },
+            { tag: "td", text: task.priority.toString(), attr: [{key: "data-key", value: "priority"}] },
+            { tag: "td", text: task.due.toString(), attr: [{key: "data-key", value: "due"}] },
         ], [{key: "id", value: "list-task-" + task.taskId.toString()}, { key: "data-index", value: index}]);
         addControlsToTr(task.taskId);
     });
@@ -47,19 +47,26 @@ function addTrToList(parent, line=[], attr=[], insertBefore=null) {
 }
 
 function addControlsToTr(taskId) {
+    var imageHeight = "32"
     var parent = document.getElementById("list-task-controls-" + taskId.toString());
     deleteBtn = document.createElement("img");
+    deleteBtn.setAttribute("height", imageHeight);
+    deleteBtn.setAttribute("width", imageHeight);
+    deleteBtn.setAttribute("src", "/assets/img/delete.png");
     deleteBtn.setAttribute("alt", "delete");
     deleteBtn.addEventListener("click", () => {deleteLine(taskId)} );
     parent.appendChild(deleteBtn);
     completeBtn = document.createElement("img");
+    completeBtn.setAttribute("height", imageHeight);
+    completeBtn.setAttribute("width", imageHeight);
+    completeBtn.setAttribute("src", "/assets/img/done.png");
     completeBtn.setAttribute("alt", "complete");
     completeBtn.addEventListener("click", () => {updateLine(taskId, "status", "complete")} );
     parent.appendChild(completeBtn);
 }
 
 function updateLine(taskId, key, newValue) {
-    updateTask(taskId, "status", "complete")
+    updateTask(taskId, "status", "complete");
 }
 
 function deleteLine(taskId) {

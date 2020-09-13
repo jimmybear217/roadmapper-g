@@ -16,16 +16,16 @@ function displayList() {
     ]);
     tasks.data.forEach( (task) => {
         addTrToList(parent, [
-            { tag: "td", text: task.taskId },
-            { tag: "td", text: task.parentId },
-            { tag: "td", text: task.prerequisiteIds },
-            { tag: "td", text: task.status },
-            { tag: "td", text: task.title },
-            { tag: "td", text: task.description },
-            { tag: "td", text: task.link },
-            { tag: "td", text: task.priority },
-            { tag: "td", text: task.due },
-        ], [{key: "id", value: "list-task-" + task.taskId}]);
+            { tag: "td", text: task.taskId.toString() },
+            { tag: "td", text: task.parentId.toString() },
+            { tag: "td", text: task.prerequisiteIds.toString() },
+            { tag: "td", text: task.status.toString() },
+            { tag: "td", text: task.title.toString() },
+            { tag: "td", text: task.description.toString() },
+            { tag: "td", text: task.link.toString() },
+            { tag: "td", text: task.priority.toString() },
+            { tag: "td", text: task.due.toString() },
+        ], [{key: "id", value: "list-task-" + task.taskId.toString()}]);
     });
 }
 

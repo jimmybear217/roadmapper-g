@@ -49,11 +49,20 @@ function getTaskList(count=25, step=0) {
     }
 }
 
-function updateTask(action="update", changes = [], taskId = null) {
-    if (DB) {
-        allTasks = updateTaskInDB(taskId, action, updates);
+function updateTask(taskId, key, value) {
+    var newObj = undefined;
+    if (document.getElementById("list-task-" + taskId.toString()).hasAttribute("data-index")) {
+        newObj = allTasks[document.getElementById("list-task-" + taskId.toString()).getAttribute("data-index")];
     } else {
-        allTasks = updateTaskInLegacy(taskId, action, updates);
+        allTasks.map( (ta) => { if (ta.taskId == taskId) newObj = ta; });
+        
+    }
+    newObj[key] = value
+    console.log(newObj);
+    if (DB) {
+        allTasks = dbWriteTask("PUT", newObj).oncomplete = loadAllTasks();
+    } else {
+        allTasks = updateTaskInLegacy(taskId, key, value);
     }
 }
 
@@ -102,12 +111,13 @@ function dbWriteTask(method="ADD", tuple={}) {
     var objectStore = transaction.objectStore("tasks");
     if (method == "ADD") {
         var request = objectStore.add(tuple);
+        request.onsuccess = () => { console.debug("Task added: ", request.result); }
     } else if (method == "PUT") {
         var request = objectStore.put(tuple);
+        request.onsuccess = () => { console.debug("Task modified: ", request.result); }
     } else {
         console.error("Unknown write method:", method);
     }
-    request.onsuccess = () => { console.debug("Task added: ", request.result); }
     transaction.onerror = () => { console.warn("Transaction failed:", transaction.error); }
     return transaction;
 }

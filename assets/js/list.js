@@ -15,7 +15,7 @@ function displayList() {
         { tag: "th", text: "priority" },        // priority of this task
         { tag: "th", text: "due" },             // timestamp when task is due
     ]);
-    tasks.data.forEach( (task) => {
+    tasks.data.forEach( (task, index) => {
         addTrToList(parent, [
             { tag: "td", attr: [ {key: "id", value: "list-task-controls-" + task.taskId.toString()}, { key: 'class', value: "list-task-controls"}]},
             { tag: "td", text: task.taskId.toString() },
@@ -27,7 +27,7 @@ function displayList() {
             { tag: "td", text: task.link.toString() },
             { tag: "td", text: task.priority.toString() },
             { tag: "td", text: task.due.toString() },
-        ], [{key: "id", value: "list-task-" + task.taskId.toString()}]);
+        ], [{key: "id", value: "list-task-" + task.taskId.toString()}, { key: "data-index", value: index}]);
         addControlsToTr(task.taskId);
     });
 }
@@ -52,6 +52,14 @@ function addControlsToTr(taskId) {
     deleteBtn.setAttribute("alt", "delete");
     deleteBtn.addEventListener("click", () => {deleteLine(taskId)} );
     parent.appendChild(deleteBtn);
+    completeBtn = document.createElement("img");
+    completeBtn.setAttribute("alt", "complete");
+    completeBtn.addEventListener("click", () => {updateLine(taskId, "status", "complete")} );
+    parent.appendChild(completeBtn);
+}
+
+function updateLine(taskId, key, newValue) {
+    updateTask(taskId, "status", "complete")
 }
 
 function deleteLine(taskId) {

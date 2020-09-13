@@ -43,7 +43,7 @@
             <h1>Home sweet home</h1>
         </section>
         <section class='page' id='page-sync-debug' data-navId="list">
-            
+            <pre id='output-debug'></pre>
         </section>
     </div>
 </body>

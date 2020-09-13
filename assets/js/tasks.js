@@ -49,7 +49,7 @@ function getTaskList(count=25, step=0) {
     }
 }
 
-function updateTask(taskId, action="update", updates = []) {
+function updateTask(action="update", changes = [], taskId = null) {
     if (DB) {
         allTasks = updateTaskInDB(taskId, action, updates);
     } else {
@@ -57,9 +57,17 @@ function updateTask(taskId, action="update", updates = []) {
     }
 }
 
+function deleteTask(taskId) {
+    if (taskId >= 0){
+        if (DB) {
+            deleteTaskFromDB(taskId);
+        }
+    }
+}
+
 
 function loadAllTasks() {
-    console.log("Loading Tasks");
+    // console.log("Loading Tasks");
     if (DB) {
         loadAllTaskListFromDB()
         .oncomplete = loadAllTasksCompleted;
@@ -68,7 +76,7 @@ function loadAllTasks() {
     }
 }
 function loadAllTasksCompleted() {
-    console.log("All tasks loaded")
+    console.debug("All tasks loaded")
     document.getElementById("page-list").dispatchEvent(new Event("taskUpdate"));
 }
 
@@ -117,13 +125,32 @@ function loadAllTaskListFromDB() {
     }
     return transaction;
 }
-function updateTaskInDB(taskId, action, updates) {
-    // var transaction = DB.transaction('tasks', "readwrite");
-    // PUT query?
+function deleteTaskFromDB(taskId) {
+    console.debug("Deleting task", taskId)
+    if (taskId == "ALL"){
+        // clear all storage
+        var transaction = DB.transaction('tasks', "readwrite");
+        var tasks = transaction.objectStore("tasks");
+        request = tasks.clear();
+        request.onsuccess = () => { allTasks = []; }
+        transaction.onerror = () => {
+            console.error("Unable to clear DB:", transaction.error);
+            transaction.error.stopPropagation();
+        }
+        return transaction;
+    } else {
+        // delete specified entry
+        var transaction = DB.transaction('tasks', "readwrite");
+        var tasks = transaction.objectStore("tasks");
+        request = tasks.delete(taskId);
+        transaction.onerror = () => {
+            console.error("Unable to delete `", taskId, "` from DB:", transaction.error);
+            transaction.error.stopPropagation();
+        }
+        return transaction;
+    }
 }
-function createTaskListLegacy() {};
-function loadAllTaskListLegacy() {}
-function updateTaskInLegacy(taskId, action, updates) {}
 
+document.getElementById("btn_addTuple").addEventListener("click", () => {dbWriteTask("ADD", {parentId: false, prerequisiteIds: false, status: "active", title: "Welcome to ReoadMapper-G", description: "This is your first ever task", link: "", priority: 0, due: false }).oncomplete = () => {loadAllTasks()}});
+document.getElementById("btn_clearStorage").addEventListener("click", () => {deleteTaskFromDB("ALL").oncomplete = () => {loadAllTasks()} });
 
-document.getElementById("addTuple").addEventListener("click", () => {dbWriteTask("ADD", {parentId: false, prerequisiteIds: false, status: "active", title: "Welcome to ReoadMapper-G", description: "This is your first ever task", link: "", priority: 0, due: false }).oncomplete = () => {loadAllTasks()}});

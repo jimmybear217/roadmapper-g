@@ -49,5 +49,5 @@ function clearList(parent) {
 
 document.getElementById("page-list").addEventListener("taskUpdate", event => {
     displayList();
-    // event.stopImmediatePropagation()
+    event.stopImmediatePropagation()
 });

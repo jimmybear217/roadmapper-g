@@ -37,6 +37,7 @@
         <section class='page' id='page-loading' data-navId="" enabled="true"><div class='loader'></div></section>
         <section class='page' id='page-list' data-navId="list">
             <table id='globalList'></table>
+            <button id='addTuple'>Add a new row</button>
         </section>
         <section class='page' id='page-visual' data-navId="visual"></section>
         <section class='page' id='page-home' data-navId="home">

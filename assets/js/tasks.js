@@ -124,3 +124,6 @@ function updateTaskInDB(taskId, action, updates) {
 function createTaskListLegacy() {};
 function loadAllTaskListLegacy() {}
 function updateTaskInLegacy(taskId, action, updates) {}
+
+
+document.getElementById("addTuple").addEventListener("click", () => {dbWriteTask("ADD", {parentId: false, prerequisiteIds: false, status: "active", title: "Welcome to ReoadMapper-G", description: "This is your first ever task", link: "", priority: 0, due: false }).oncomplete = () => {loadAllTasks()}});

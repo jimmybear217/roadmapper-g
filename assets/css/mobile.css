@@ -24,4 +24,8 @@ body, html {
         display: inline-block;
         text-align: center;
     }
+    
+    #page {
+        margin-top: 20vh;
+    }
 }

@@ -87,3 +87,7 @@ header #logo {
 #loader-page {
     z-index: 999;
 }
+
+#nav-sync {
+    background-color: darkgray;
+}

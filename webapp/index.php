@@ -4,6 +4,7 @@
         Array( "id" => "home", "href" => "javascript:switchPage(\"home\")", "text" => "Home"),
         Array( "id" => "visual", "href" => "javascript:switchPage(\"visual\")", "text" => "Visual"),
         Array( "id" => "list", "href" => "javascript:switchPage(\"list\")", "text" => "List"),
+        Array( "id" => "sync", "href" => "javascript:switchPage(\"sync-dashboard\")", "text" => "<img id='online-status' src='/assets/img/sync/007-cloud-computing-31.svg' height='24' width='24'>"),
     );
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@
                     echo "'>";
                     echo (isset($button['text'])) ? $button['text'] : "";
                     echo "</a>";
-                } ?>    
+                } ?>
         </nav>
     </header>
     <div id='page' data-homePage="home">
@@ -44,11 +45,33 @@
         <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
         </section>
-        <section class='page' id='page-sync-debug' data-navId="list">
-            <pre id='output-debug'></pre>
+        <section class='page' id='page-sync-dashboard' data-navId="list">
+            <div class='dash-block' id='syncNetworkStatus'>
+                <h2>Network Status</h2>
+                <table>
+                <?php
+                    $syncNetworkTable = array("ok", "status", "statusText", "exception");
+                    foreach($syncNetworkTable as $row) { echo "<tr><th>$row</th><td id='syncNetwork-$row'></td></tr>"; }
+                ?>
+                </table>
+            </div>
+            <div class='dash-block' id='syncStorageStatus'>
+                <h2>Storage Status</h2>
+                <table>
+                <?php
+                    $syncStorageTable = array("localCount", "remoteCount");
+                    foreach($syncStorageTable as $row) { echo "<tr><th>$row</th><td id='syncStorage-$row'></td></tr>"; }
+                ?>
+                </table>
+            </div>
+            <div class='dash-wide'>
+                <h2>Log</h2>
+                <pre class='' id='syncOutput'><?php echo "[" . date(DATE_ATOM) . "] Generated page" . PHP_EOL; ?></pre>
+            </div>
         </section>
     </div>
 </body>
+<script src="/assets/js/sync-manager.js" type="text/javascript"></script>
 <script src="/assets/js/pages.js" type="text/javascript"></script>
 <script src="/assets/js/list.js" type="text/javascript"></script>
 <script src="/assets/js/tasks.js" type="text/javascript"></script>

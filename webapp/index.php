@@ -45,7 +45,7 @@
         <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
         </section>
-        <section class='page' id='page-sync-dashboard' data-navId="list">
+        <section class='page' id='page-sync-dashboard' data-navId="sync">
             <div class='dash-block' id='syncNetworkStatus'>
                 <h2>Network Status</h2>
                 <table>

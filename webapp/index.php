@@ -41,7 +41,14 @@
             <button id='btn_addTuple'><img src='/assets/img/add.png' height='24' width='24'>Add a new row</button>
             <button id='btn_clearStorage'><img src='/assets/img/delete.png' height='24' width='24'>Clear the list</button>
         </section>
-        <section class='page' id='page-visual' data-navId="visual"></section>
+        <section class='page' id='page-visual' data-navId="visual">
+            <div id="container-visual">
+                <div id="container-visual-active"></div>
+                <div id="container-visual-completed"></div>
+                <div id="container-visual-locked"></div>
+                <div id="container-visual-unknown"></div>
+            </div>
+        </section>
         <section class='page' id='page-home' data-navId="home">
             <h1>Home sweet home</h1>
         </section>
